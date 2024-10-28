@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name = "Omnidrive", group = "Driver Controlled")
+@TeleOp(name = "Omnidrive7", group = "Driver Controlled")
 public class Omnidrive extends LinearOpMode {
 
   @Override
@@ -76,10 +76,6 @@ public class Omnidrive extends LinearOpMode {
       // robot.ArmFlipper.setPower(0.2);
       // }
 
-      if (gamepad2.dpad_left) {
-        robot.ArmFlipper.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        singleIntakeSelect = false;
-      }
 
       double FRPower = ((-pivot + (vertical - horizontal)) * speedScalar);
       double BRPower = ((-pivot + vertical + horizontal) * speedScalar);
@@ -101,8 +97,6 @@ public class Omnidrive extends LinearOpMode {
 
       robot.setDrivePower(FLPower, FRPower, BLPower, BRPower);
 
-      robot.ArmFlipper.setPower(gamepad1.right_stick_y * 0.1);
-      robot.Claw.setPower((gamepad1.right_trigger - gamepad1.left_trigger) * 0.1);
 
       // // ? Servo position measurer
       // if (gamepad2.x) {

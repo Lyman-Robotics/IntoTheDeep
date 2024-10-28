@@ -41,9 +41,6 @@ public class RobotClass extends LinearOpMode {
   public DcMotor FRDrive;
   public DcMotor BLDrive;
   public DcMotor BRDrive;
-  public DcMotor Intake;
-  public DcMotor ArmFlipper;
-  public DcMotor Claw;
 
   public OpenCvCamera camera;
   public String webcamName = "Webcam 1";
@@ -80,33 +77,27 @@ public class RobotClass extends LinearOpMode {
     FRDrive = hwMap.get(DcMotor.class, "FRDrive");
     BLDrive = hwMap.get(DcMotor.class, "BLDrive");
     BRDrive = hwMap.get(DcMotor.class, "BRDrive");
-    ArmFlipper = hwMap.get(DcMotor.class, "ArmFlipper");
-    Claw = hwMap.get(DcMotor.class, "Claw");
 
     // Make robot drive straight
-    // BRDrive.setDirection(DcMotor.Direction.REVERSE);
-    BLDrive.setDirection(DcMotor.Direction.REVERSE);
-    // FLDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+    FRDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+    BLDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+    BRDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
     FLDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     FRDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     BLDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     BRDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-    ArmFlipper.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-    Claw.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
     FLDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     FRDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     BLDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     BRDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-    Claw.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
     FLDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     BLDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     FRDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     BRDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    ArmFlipper.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-    Claw.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     // ! Computer Vision
     // int cameraMonitorViewId = hwMap.appContext
